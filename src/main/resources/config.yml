@@ -1,0 +1,6 @@
+punishments:
+  mute:
+    command: "/mute"
+    permission:
+      use: "essentials.mute"
+      bypass: "essentials.mute.exempt"
