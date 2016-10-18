@@ -1,0 +1,4 @@
+name: PunishmentAnnouncer
+version: 1.0
+main: com.perceivedev.pannouncer.PunishmentAnnouncer
+description: A simple broadcaster for punish commands
