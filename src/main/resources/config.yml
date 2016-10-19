@@ -4,3 +4,5 @@ punishments:
     permission:
       use: "essentials.mute"
       bypass: "essentials.mute.exempt"
+    message: "&6%player% was muted by &c%sender%"
+    has-reason: true
