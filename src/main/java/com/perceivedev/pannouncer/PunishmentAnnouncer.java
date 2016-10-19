@@ -17,7 +17,7 @@ public class PunishmentAnnouncer extends JavaPlugin {
 	}
 	
 	public List<Command> getCommands() {
-		List<Command> commands = new ArrayList<>();
+		List<Command> commands = new ArrayList<Command>();
 		for (String command : getConfig().getKeys(false)) {
 			commands.add(new Command(command));
 		}
