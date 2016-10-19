@@ -89,13 +89,13 @@ public class CommandListener implements Listener {
         }
 
         // @formatter:off
-            String message = command.getMessage()
-                    .replace("%player%", split[1])
-                    .replace("%sender%", player.getName())
-                    .replace("%reason%", reason);
-            // @formatter:on
+        String message = command.getMessage()
+                .replace("%player%", split[1])
+                .replace("%sender%", player.getName())
+                .replace("%reason%", reason);
+        // @formatter:on
 
-        new DelayedBroadcast(message).runTaskLater(plugin, 1L);
+        new DelayedBroadcast(message).send(plugin);
 
     }
 
