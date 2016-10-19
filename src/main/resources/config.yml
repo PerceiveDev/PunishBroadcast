@@ -1,8 +1,15 @@
 punishments:
   mute:
-    command: "/mute"
+    command: "mute"
     permission:
       use: "essentials.mute"
       bypass: "essentials.mute.exempt"
     message: "&6%player% was muted by &c%sender%"
+    has-reason: false
+  kick:
+    command: "kick"
+    permission:
+      use: "essentials.kick"
+      bypass: "essentials.kick.exempt"
+    message: "&c%player% &6was kicked by &c%sender%: %reason%"
     has-reason: true

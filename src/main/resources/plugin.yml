@@ -2,3 +2,8 @@ name: PunishmentAnnouncer
 version: 1.0
 main: com.perceivedev.pannouncer.PunishmentAnnouncer
 description: A simple broadcaster for punish commands
+commands:
+    punishmentannouncer:
+        description: "Management command for PunishmentAnnouncer"
+        aliases: [pa,pannouncer,punishannouncer]
+        usage: "\u00a7cSomething went wrong!"
