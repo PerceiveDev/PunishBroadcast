@@ -26,16 +26,17 @@ public class CommandListener implements Listener {
 			
 			if (command.hasReason()) {
 				if (split.length != 3) {
-					return;
+					continue;
 				}
 			} else {
 				if (split.length != 2) {
-					return;
+					continue;
 				}
 			}
 			
 			if (!(command.getLabel().equalsIgnoreCase(split[0]))) {
-				return;
+				// After this point we will use the `return` keyword since we now know it's found the right command, so any check after this is if there's valid parameters. At this point though if the command labels don't match we don't want to exit out of the method, but we want to go to the next element in the `for` loop.
+				continue;
 			}
 			
 			if (!(event.getPlayer().hasPermission(command.getUsePerm()))) {
