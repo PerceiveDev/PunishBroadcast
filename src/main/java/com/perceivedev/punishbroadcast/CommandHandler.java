@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.perceivedev.pannouncer;
+package com.perceivedev.punishbroadcast;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -14,7 +14,7 @@ import org.bukkit.command.CommandSender;
  */
 public class CommandHandler implements CommandExecutor {
 
-    private PunishmentAnnouncer plugin;
+    private PunishBroadcast plugin;
 
     /*
      * (non-Javadoc)
@@ -26,17 +26,12 @@ public class CommandHandler implements CommandExecutor {
     /**
      * @param punishmentAnnouncer
      */
-    public CommandHandler(PunishmentAnnouncer plugin) {
+    public CommandHandler(PunishBroadcast plugin) {
         this.plugin = plugin;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
-        if (!sender.hasPermission("PunishmentAnnouncer.admin")) {
-            sender.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
-            return true;
-        }
 
         if (args.length < 1) {
             sender.sendMessage(ChatColor.GRAY + "This server is running " + ChatColor.GREEN + plugin.versionText());
@@ -46,10 +41,22 @@ public class CommandHandler implements CommandExecutor {
         String arg = args[0].toLowerCase();
 
         if (arg.equals("reload")) {
+            if (!sender.hasPermission("pb.reload")) {
+                sender.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
+                return true;
+            }
             plugin.load();
             sender.sendMessage(ChatColor.GRAY + "The config has been " + ChatColor.GREEN + "reloaded");
+        }
+        if (args.equals("toggle")) {
+            if (!sender.hasPermission("pb.toggle")) {
+                sender.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
+                return true;
+            }
+            boolean enabled = plugin.toggle();
+            sender.sendMessage(ChatColor.GRAY + "PunishBroadcast is now " + ChatColor.GREEN + (enabled ? "enabled" : "disabled"));
         } else {
-            sender.sendMessage(ChatColor.GRAY + "Usage: " + ChatColor.GREEN + "/punishmentannouncer [reload]");
+            sender.sendMessage(ChatColor.GRAY + "Usage: " + ChatColor.GREEN + "/punishbroadcast [toggle|reload]");
         }
 
         return true;

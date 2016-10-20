@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.perceivedev.pannouncer;
+package com.perceivedev.punishbroadcast;
 
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,6 +32,6 @@ public abstract class DelayedMessage extends BukkitRunnable {
         runTaskLater(plugin, delay);
     }
 
-    public abstract void send(String message);
+    protected abstract void send(String message);
 
 }

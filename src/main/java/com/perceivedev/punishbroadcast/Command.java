@@ -1,4 +1,4 @@
-package com.perceivedev.pannouncer;
+package com.perceivedev.punishbroadcast;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;

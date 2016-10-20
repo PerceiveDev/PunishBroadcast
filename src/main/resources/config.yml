@@ -1,3 +1,6 @@
+# Whether or not to broadcast punishments
+enabled: true
+
 punishments:
   mute:
     command: "mute"

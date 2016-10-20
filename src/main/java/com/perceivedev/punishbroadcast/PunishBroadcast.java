@@ -1,16 +1,17 @@
-package com.perceivedev.pannouncer;
+package com.perceivedev.punishbroadcast;
 
 import java.util.HashMap;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.perceivedev.pannouncer.events.CommandListener;
+import com.perceivedev.punishbroadcast.events.CommandListener;
 
-public class PunishmentAnnouncer extends JavaPlugin {
+public class PunishBroadcast extends JavaPlugin {
 
-    private static PunishmentAnnouncer instance;
-    private HashMap<String, Command>   commands = new HashMap<String, Command>();
+    private static PunishBroadcast   instance;
+    private HashMap<String, Command> commands = new HashMap<String, Command>();
+    private boolean                  enabled  = true;
 
     public void onEnable() {
         // Allow static access to instance
@@ -18,8 +19,7 @@ public class PunishmentAnnouncer extends JavaPlugin {
         // Save default config
         saveDefaultConfig();
         load();
-        getCommand("punishmentannouncer").setExecutor(new CommandHandler(this));
-        // @ZP4RKER: You forgot to register the event listener XD
+        getCommand("punishbroadcast").setExecutor(new CommandHandler(this));
         getServer().getPluginManager().registerEvents(new CommandListener(this), this);
     }
 
@@ -40,13 +40,15 @@ public class PunishmentAnnouncer extends JavaPlugin {
             }
         }
 
+        enabled = getConfig().getBoolean("enabled");
+
     }
 
     public Command matchCommand(String label) {
         return commands.get(label);
     }
 
-    public static PunishmentAnnouncer getInstance() {
+    public static PunishBroadcast getInstance() {
         return instance;
     }
 
@@ -55,6 +57,23 @@ public class PunishmentAnnouncer extends JavaPlugin {
      */
     public String versionText() {
         return getName() + " v" + getDescription().getVersion();
+    }
+
+    /**
+     * @return
+     */
+    public boolean toggle() {
+        enabled = !enabled;
+        getConfig().set("enabled", enabled);
+        saveConfig();
+        return enabled;
+    }
+
+    /**
+     * @return If the plugin has punish-broadcasting enabled
+     */
+    public boolean isBroadcastEnabled() {
+        return enabled;
     }
 
 }
