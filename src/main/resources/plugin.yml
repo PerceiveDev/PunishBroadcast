@@ -1,9 +1,9 @@
-name: PunishmentAnnouncer
+name: PunishBroadcast
 version: 1.0
-main: com.perceivedev.pannouncer.PunishmentAnnouncer
+main: com.perceivedev.punishbroadcast.PunishBroadcast
 description: A simple broadcaster for punish commands
 commands:
-    punishmentannouncer:
-        description: "Management command for PunishmentAnnouncer"
-        aliases: [pa,pannouncer,punishannouncer]
+    punishbroadcast:
+        description: "Management command for PunishBroadcast"
+        aliases: [pb]
         usage: "\u00a7cSomething went wrong!"
