@@ -38,20 +38,18 @@ public class CommandHandler implements CommandExecutor {
             return true;
         }
 
-        String arg = args[0].toLowerCase();
+        String subCmd = args[0].toLowerCase();
 
-        if (arg.equals("reload")) {
+        if (subCmd.equals("reload")) {
             if (!sender.hasPermission("pb.reload")) {
                 sender.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
                 return true;
             }
             plugin.load();
             sender.sendMessage(ChatColor.GRAY + "The config has been " + ChatColor.GREEN + "reloaded");
-        }
-        if (args.equals("toggle")) {
+        } else if (subCmd.equals("toggle")) {
             if (!sender.hasPermission("pb.toggle")) {
                 sender.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
-                return true;
             }
             boolean enabled = plugin.toggle();
             sender.sendMessage(ChatColor.GRAY + "PunishBroadcast is now " + ChatColor.GREEN + (enabled ? "enabled" : "disabled"));
